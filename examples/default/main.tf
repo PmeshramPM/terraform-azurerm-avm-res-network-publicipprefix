@@ -41,6 +41,10 @@ module "naming" {
 resource "azurerm_resource_group" "this" {
   location = module.regions.regions[random_integer.region_index.result].name
   name     = module.naming.resource_group.name_unique
+  tags = {
+    environment = "dev"
+    costcenter  = "it"
+}
 }
 
 # This is the module call
@@ -57,3 +61,5 @@ module "test" {
 
   enable_telemetry = var.enable_telemetry # see variables.tf
 }
+
+
