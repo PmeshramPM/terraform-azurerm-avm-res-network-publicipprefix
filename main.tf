@@ -1,4 +1,3 @@
-# TODO: Replace this dummy resource azurerm_resource_group.TODO with your module resource
 resource "azurerm_public_ip_prefix" "this" {
   location            = var.location
   name                = var.name # calling code must supply the name
@@ -21,7 +20,7 @@ resource "azurerm_role_assignment" "this" {
   for_each = var.role_assignments
 
   principal_id                           = each.value.principal_id
-  scope                                  = azurerm_public_ip_prefix.this.id # TODO: Replace this dummy resource azurerm_resource_group.TODO with your module resource
+  scope                                  = azurerm_public_ip_prefix.this.id
   condition                              = each.value.condition
   condition_version                      = each.value.condition_version
   delegated_managed_identity_resource_id = each.value.delegated_managed_identity_resource_id
