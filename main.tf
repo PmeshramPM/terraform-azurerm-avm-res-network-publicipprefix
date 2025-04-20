@@ -1,11 +1,11 @@
 # TODO: Replace this dummy resource azurerm_resource_group.TODO with your module resource
 resource "azurerm_public_ip_prefix" "this" {
-  location = var.location
-  name     = var.name # calling code must supply the name
-  tags     = var.tags
+  location            = var.location
+  name                = var.name # calling code must supply the name
   resource_group_name = var.resource_group_name
-  sku      = var.sku_name
-  prefix_length = var.prefix_length
+  prefix_length       = var.prefix_length
+  sku                 = var.sku_name
+  tags                = var.tags
 }
 
 # required AVM resources interfaces

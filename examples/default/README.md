@@ -47,6 +47,10 @@ module "naming" {
 resource "azurerm_resource_group" "this" {
   location = module.regions.regions[random_integer.region_index.result].name
   name     = module.naming.resource_group.name_unique
+  tags = {
+    environment = "dev"
+    costcenter  = "it"
+  }
 }
 
 # This is the module call
@@ -58,11 +62,13 @@ module "test" {
   # source             = "Azure/avm-<res/ptn>-<name>/azurerm"
   # ...
   location            = azurerm_resource_group.this.location
-  name                = "TODO" # TODO update with module.naming.<RESOURCE_TYPE>.name_unique
+  name                = module.naming.public_ip_prefix.name_unique
   resource_group_name = azurerm_resource_group.this.name
 
   enable_telemetry = var.enable_telemetry # see variables.tf
 }
+
+
 ```
 
 <!-- markdownlint-disable MD033 -->
@@ -101,6 +107,29 @@ If it is set to false, then no telemetry will be collected.
 Type: `bool`
 
 Default: `true`
+
+### <a name="input_lock"></a> [lock](#input\_lock)
+
+Description: The lock level to apply to the resources in this pattern. Default is `None`. Possible values are `None`, `CanNotDelete`, and `ReadOnly`.
+
+Type:
+
+```hcl
+object({
+    name = optional(string, null)
+    kind = optional(string, "None")
+  })
+```
+
+Default: `{}`
+
+### <a name="input_tags"></a> [tags](#input\_tags)
+
+Description: Map of tags to assign to the resources.
+
+Type: `map(any)`
+
+Default: `null`
 
 ## Outputs
 

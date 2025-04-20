@@ -44,7 +44,7 @@ resource "azurerm_resource_group" "this" {
   tags = {
     environment = "dev"
     costcenter  = "it"
-}
+  }
 }
 
 # This is the module call
