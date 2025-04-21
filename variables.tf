@@ -71,7 +71,6 @@ variable "sku_tier" {
   description = "The SKU tier of the Public IP Prefix. Possible values are Regional and Global."
 }
 
-
 # tflint-ignore: terraform_unused_declarations
 variable "tags" {
   type        = map(string)
