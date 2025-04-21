@@ -120,6 +120,14 @@ Type: `string`
 
 Default: `"Standard"`
 
+### <a name="input_sku_tier"></a> [sku\_tier](#input\_sku\_tier)
+
+Description: The SKU tier of the Public IP Prefix. Possible values are Regional and Global.
+
+Type: `string`
+
+Default: `"Regional"`
+
 ### <a name="input_tags"></a> [tags](#input\_tags)
 
 Description: (Optional) Tags of the resource.

@@ -60,7 +60,11 @@ module "test" {
   resource_group_name = azurerm_resource_group.this.name
   enable_telemetry    = var.enable_telemetry # see variables.tf
   tags                = var.tags
-  prefix_length       = var.prefix_length # see variables.tf
+  prefix_length       = var.prefix_length     # see variables.tf
+  lock                = { kind = "ReadOnly" } # see variables.tf
 }
+
+
+
 
 
