@@ -8,19 +8,10 @@ If it is set to false, then no telemetry will be collected.
 DESCRIPTION
 }
 
-variable "lock" {
-  type = object({
-    name = optional(string, null)
-    kind = optional(string, "None")
-  })
-  default     = {}
-  description = "The lock level to apply to the resources in this pattern. Default is `None`. Possible values are `None`, `CanNotDelete`, and `ReadOnly`."
-  nullable    = false
-
-  validation {
-    condition     = contains(["CanNotDelete", "ReadOnly", "None"], var.lock.kind)
-    error_message = "The lock level must be one of: 'None', 'CanNotDelete', or 'ReadOnly'."
-  }
+variable "prefix_length" {
+  type        = number
+  default     = 28
+  description = "The length of the Public IP Prefix"
 }
 
 variable "tags" {

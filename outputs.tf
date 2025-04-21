@@ -4,14 +4,14 @@ output "public_ip_prefix_address" {
   value       = azurerm_public_ip_prefix.this.ip_prefix
 }
 
-output "public_ip_prefix_id" {
-  description = "The ID of the Public IP Prefix"
-  value       = azurerm_public_ip_prefix.this.id
-}
-
 # Module owners should include the full resource via a 'resource' output
 # https://azure.github.io/Azure-Verified-Modules/specs/terraform/#id-tffr2---category-outputs---additional-terraform-outputs
 output "resource" {
   description = "This is the full output for the resource."
   value       = azurerm_public_ip_prefix.this
+}
+
+output "resource_id" {
+  description = "The ID of the Public IP Prefix"
+  value       = azurerm_public_ip_prefix.this.id
 }

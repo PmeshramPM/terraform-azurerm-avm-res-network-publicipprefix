@@ -64,8 +64,9 @@ module "test" {
   location            = azurerm_resource_group.this.location
   name                = module.naming.public_ip_prefix.name_unique
   resource_group_name = azurerm_resource_group.this.name
-
-  enable_telemetry = var.enable_telemetry # see variables.tf
+  enable_telemetry    = var.enable_telemetry # see variables.tf
+  tags                = var.tags
+  prefix_length       = var.prefix_length # see variables.tf
 }
 
 
@@ -108,20 +109,13 @@ Type: `bool`
 
 Default: `true`
 
-### <a name="input_lock"></a> [lock](#input\_lock)
+### <a name="input_prefix_length"></a> [prefix\_length](#input\_prefix\_length)
 
-Description: The lock level to apply to the resources in this pattern. Default is `None`. Possible values are `None`, `CanNotDelete`, and `ReadOnly`.
+Description: The length of the Public IP Prefix
 
-Type:
+Type: `number`
 
-```hcl
-object({
-    name = optional(string, null)
-    kind = optional(string, "None")
-  })
-```
-
-Default: `{}`
+Default: `28`
 
 ### <a name="input_tags"></a> [tags](#input\_tags)
 
