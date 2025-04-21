@@ -1,6 +1,19 @@
 # required AVM interfaces
 # remove only if not supported by the resource
 
+
+variable "sku_name" {
+  type        = string
+  default     = "Standard"
+  description = "The SKU of the Public IP Prefix. Possible values are Standard and Basic."
+}
+
+variable "sku_tier" {
+  type        = string
+  default     = "Regional"
+  description = "The SKU tier of the Public IP Prefix. Possible values are Regional and Global."
+}
+
 variable "location" {
   type        = string
   description = "Azure region where the Public IP Prefix should be deployed."
@@ -59,17 +72,6 @@ DESCRIPTION
   }
 }
 
-variable "sku_name" {
-  type        = string
-  default     = "Standard"
-  description = "The SKU of the Public IP Prefix. Possible values are Standard and Basic."
-}
-
-variable "sku_tier" {
-  type        = string
-  default     = "Regional"
-  description = "The SKU tier of the Public IP Prefix. Possible values are Regional and Global."
-}
 
 # tflint-ignore: terraform_unused_declarations
 variable "tags" {
