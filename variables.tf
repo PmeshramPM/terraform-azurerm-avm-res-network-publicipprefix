@@ -1,19 +1,6 @@
 # required AVM interfaces
 # remove only if not supported by the resource
 
-
-variable "sku_name" {
-  type        = string
-  default     = "Standard"
-  description = "The SKU of the Public IP Prefix. Possible values are Standard and Basic."
-}
-
-variable "sku_tier" {
-  type        = string
-  default     = "Regional"
-  description = "The SKU tier of the Public IP Prefix. Possible values are Regional and Global."
-}
-
 variable "location" {
   type        = string
   description = "Azure region where the Public IP Prefix should be deployed."
@@ -23,23 +10,19 @@ variable "location" {
 variable "name" {
   type        = string
   description = "The name of the public IP Prefix."
-
 }
 
 variable "prefix_length" {
   type = number
   #default     = 28
   description = "The length of the Public IP Prefix"
-
 }
 
 # This is required for most resource modules
 variable "resource_group_name" {
   type        = string
   description = "The name of the resource group in which to create the Public IP Prefix."
-
 }
-
 
 variable "enable_telemetry" {
   type        = bool
@@ -76,7 +59,17 @@ DESCRIPTION
   }
 }
 
+variable "sku_name" {
+  type        = string
+  default     = "Standard"
+  description = "The SKU of the Public IP Prefix. Possible values are Standard and Basic."
+}
 
+variable "sku_tier" {
+  type        = string
+  default     = "Regional"
+  description = "The SKU tier of the Public IP Prefix. Possible values are Regional and Global."
+}
 
 # tflint-ignore: terraform_unused_declarations
 variable "tags" {

@@ -5,8 +5,8 @@ resource "azurerm_public_ip_prefix" "this" {
   ip_version          = var.ip_version
   prefix_length       = var.prefix_length
   sku                 = var.sku_name
-  tags                = var.tags
   sku_tier            = var.sku_tier
+  tags                = var.tags
 }
 
 # required AVM resources interfaces
