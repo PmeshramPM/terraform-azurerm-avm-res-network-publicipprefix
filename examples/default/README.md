@@ -115,7 +115,7 @@ Default: `true`
 
 ### <a name="input_prefix_length"></a> [prefix\_length](#input\_prefix\_length)
 
-Description: The length of the Public IP Prefix
+Description: (Optional) Specifies the number of bits of the prefix. The value can be set between 0 (4,294,967,296 addresses) and 31 (2 addresses). Defaults to `28`(16 addresses). Changing this forces a new resource to be created.
 
 Type: `number`
 

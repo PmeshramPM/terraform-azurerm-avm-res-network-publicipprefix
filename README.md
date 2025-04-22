@@ -62,7 +62,7 @@ Type: `string`
 
 ### <a name="input_prefix_length"></a> [prefix\_length](#input\_prefix\_length)
 
-Description: The length of the Public IP Prefix
+Description: (Optional) Specifies the number of bits of the prefix. The value can be set between 0 (4,294,967,296 addresses) and 31 (2 addresses). Defaults to `28`(16 addresses). Changing this forces a new resource to be created.
 
 Type: `number`
 
@@ -88,7 +88,7 @@ Default: `true`
 
 ### <a name="input_ip_version"></a> [ip\_version](#input\_ip\_version)
 
-Description: IP version, either IPv4 or IPv6
+Description: (Optional) The IP Version to use, `IPv6` or `IPv4`. Changing this forces a new resource to be created. Default is `IPv4`.
 
 Type: `string`
 
@@ -122,7 +122,7 @@ Default: `"Standard"`
 
 ### <a name="input_sku_tier"></a> [sku\_tier](#input\_sku\_tier)
 
-Description: The SKU tier of the Public IP Prefix. Possible values are Regional and Global.
+Description: (Optional) The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
 
 Type: `string`
 
