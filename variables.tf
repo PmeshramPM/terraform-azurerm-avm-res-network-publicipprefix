@@ -13,9 +13,8 @@ variable "name" {
 }
 
 variable "prefix_length" {
-  type = number
-  #default     = 28
-  description = "The length of the Public IP Prefix"
+  type        = number
+  description = "(Optional) Specifies the number of bits of the prefix. The value can be set between 0 (4,294,967,296 addresses) and 31 (2 addresses). Defaults to `28`(16 addresses). Changing this forces a new resource to be created."
 }
 
 # This is required for most resource modules
@@ -37,7 +36,7 @@ DESCRIPTION
 variable "ip_version" {
   type        = string
   default     = "IPv4"
-  description = "IP version, either IPv4 or IPv6"
+  description = "(Optional) The IP Version to use, `IPv6` or `IPv4`. Changing this forces a new resource to be created. Default is `IPv4`."
 }
 
 variable "lock" {
@@ -68,7 +67,7 @@ variable "sku_name" {
 variable "sku_tier" {
   type        = string
   default     = "Regional"
-  description = "The SKU tier of the Public IP Prefix. Possible values are Regional and Global."
+  description = "(Optional) The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created."
 }
 
 # tflint-ignore: terraform_unused_declarations
