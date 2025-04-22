@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.74"
+      version = "~> 4.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -58,8 +58,13 @@ module "test" {
   location            = azurerm_resource_group.this.location
   name                = module.naming.public_ip_prefix.name_unique
   resource_group_name = azurerm_resource_group.this.name
-
-  enable_telemetry = var.enable_telemetry # see variables.tf
+  enable_telemetry    = var.enable_telemetry # see variables.tf
+  tags                = var.tags
+  prefix_length       = var.prefix_length     # see variables.tf
+  lock                = { kind = "ReadOnly" } # see variables.tf
 }
+
+
+
 
 

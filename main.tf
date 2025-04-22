@@ -1,10 +1,11 @@
-# TODO: Replace this dummy resource azurerm_resource_group.TODO with your module resource
 resource "azurerm_public_ip_prefix" "this" {
   location            = var.location
   name                = var.name # calling code must supply the name
   resource_group_name = var.resource_group_name
+  ip_version          = var.ip_version
   prefix_length       = var.prefix_length
   sku                 = var.sku_name
+  sku_tier            = var.sku_tier
   tags                = var.tags
 }
 
@@ -17,15 +18,4 @@ resource "azurerm_management_lock" "this" {
   scope      = azurerm_public_ip_prefix.this.id
 }
 
-resource "azurerm_role_assignment" "this" {
-  for_each = var.role_assignments
 
-  principal_id                           = each.value.principal_id
-  scope                                  = azurerm_public_ip_prefix.this.id # TODO: Replace this dummy resource azurerm_resource_group.TODO with your module resource
-  condition                              = each.value.condition
-  condition_version                      = each.value.condition_version
-  delegated_managed_identity_resource_id = each.value.delegated_managed_identity_resource_id
-  role_definition_id                     = strcontains(lower(each.value.role_definition_id_or_name), lower(local.role_definition_resource_substring)) ? each.value.role_definition_id_or_name : null
-  role_definition_name                   = strcontains(lower(each.value.role_definition_id_or_name), lower(local.role_definition_resource_substring)) ? null : each.value.role_definition_id_or_name
-  skip_service_principal_aad_check       = each.value.skip_service_principal_aad_check
-}

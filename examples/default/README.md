@@ -9,7 +9,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.74"
+      version = "~> 4.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -64,9 +64,14 @@ module "test" {
   location            = azurerm_resource_group.this.location
   name                = module.naming.public_ip_prefix.name_unique
   resource_group_name = azurerm_resource_group.this.name
-
-  enable_telemetry = var.enable_telemetry # see variables.tf
+  enable_telemetry    = var.enable_telemetry # see variables.tf
+  tags                = var.tags
+  prefix_length       = var.prefix_length     # see variables.tf
+  lock                = { kind = "ReadOnly" } # see variables.tf
 }
+
+
+
 
 
 ```
@@ -78,7 +83,7 @@ The following requirements are needed by this module:
 
 - <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) (~> 1.5)
 
-- <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) (~> 3.74)
+- <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) (~> 4.0)
 
 - <a name="requirement_random"></a> [random](#requirement\_random) (~> 3.5)
 
@@ -108,20 +113,13 @@ Type: `bool`
 
 Default: `true`
 
-### <a name="input_lock"></a> [lock](#input\_lock)
+### <a name="input_prefix_length"></a> [prefix\_length](#input\_prefix\_length)
 
-Description: The lock level to apply to the resources in this pattern. Default is `None`. Possible values are `None`, `CanNotDelete`, and `ReadOnly`.
+Description: (Optional) Specifies the number of bits of the prefix. The value can be set between 0 (4,294,967,296 addresses) and 31 (2 addresses). Defaults to `28`(16 addresses). Changing this forces a new resource to be created.
 
-Type:
+Type: `number`
 
-```hcl
-object({
-    name = optional(string, null)
-    kind = optional(string, "None")
-  })
-```
-
-Default: `{}`
+Default: `28`
 
 ### <a name="input_tags"></a> [tags](#input\_tags)
 
