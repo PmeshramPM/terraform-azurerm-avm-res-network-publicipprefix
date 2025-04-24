@@ -69,7 +69,8 @@ module "test" {
   prefix_length       = var.prefix_length     # see variables.tf
   lock                = { kind = "ReadOnly" } # see variables.tf
   zones               = var.zones
- }
+
+}
 
 
 
