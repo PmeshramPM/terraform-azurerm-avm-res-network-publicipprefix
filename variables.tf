@@ -76,3 +76,9 @@ variable "tags" {
   default     = null
   description = "(Optional) Tags of the resource."
 }
+
+variable "zones" {
+  type        = set(string)
+  default     = ["1", "2", "3"]
+  description = "(Optional) The availability zones in which the Public IP Prefix should be deployed. Changing this forces a new resource to be created."
+}

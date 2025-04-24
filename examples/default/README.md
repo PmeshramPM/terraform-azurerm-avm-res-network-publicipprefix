@@ -68,6 +68,7 @@ module "test" {
   tags                = var.tags
   prefix_length       = var.prefix_length     # see variables.tf
   lock                = { kind = "ReadOnly" } # see variables.tf
+  zones               = var.zones
 }
 
 
@@ -128,6 +129,22 @@ Description: Map of tags to assign to the resources.
 Type: `map(any)`
 
 Default: `null`
+
+### <a name="input_zones"></a> [zones](#input\_zones)
+
+Description: (Optional) The availability zones in which the Public IP Prefix should be deployed. Changing this forces a new resource to be created.
+
+Type: `set(string)`
+
+Default:
+
+```json
+[
+  "1",
+  "2",
+  "3"
+]
+```
 
 ## Outputs
 

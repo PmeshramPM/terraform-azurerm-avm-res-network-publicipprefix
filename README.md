@@ -136,6 +136,22 @@ Type: `map(string)`
 
 Default: `null`
 
+### <a name="input_zones"></a> [zones](#input\_zones)
+
+Description: (Optional) The availability zones in which the Public IP Prefix should be deployed. Changing this forces a new resource to be created.
+
+Type: `set(string)`
+
+Default:
+
+```json
+[
+  "1",
+  "2",
+  "3"
+]
+```
+
 ## Outputs
 
 The following outputs are exported:
